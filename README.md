@@ -22,7 +22,6 @@ It is recommended to use Anaconda to install the dependencies:
 Download the script Interface_location.py. Execute the Python file from the Python console or any other console, such as Spyder.
 
 ## Manual
-For support, email me at nsilva@cimne.upc.edu
-
+![bpl](Images/BPL.bmp)
 ## Support
 For support, email me at nsilva@cimne.upc.edu
