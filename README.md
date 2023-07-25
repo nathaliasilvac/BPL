@@ -17,3 +17,9 @@ It is recommended to use Anaconda to install the dependencies:
 -[rasterio 1.3.4](https://pypi.org/project/rasterio/)   
 
 -[matplotlib 3.6.2](https://matplotlib.org/stable/index.html)
+
+ ## Installation  
+Download the script Interface_location.py. Execute the Python file from the Python console or any other console, such as Spyder.
+
+## Support
+For support, email me at nsilva@cimne.upc.edu
