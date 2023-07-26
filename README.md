@@ -35,7 +35,7 @@ Section 3 of the application displays a map with the plotted coordinates. Users 
 
 After the DEM is uploaded, BPL identifies the flow paths from each breaking point. Once the process is complete, a plot showcasing the potential flow paths is displayed at the bottom.
 
-![Results](Images/ResultBLP.bmp)
+![Results](Images/ResultBPL.bmp)
 
 
 
