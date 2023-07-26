@@ -24,7 +24,7 @@ It is recommended to use Anaconda to install the dependencies:
 Download the script Interface_location.py. Execute the Python file from the Python console or any other console, such as Spyder.
 
 ## Manual
-![bpl](Images/BPL.bmp)
+![bpl](Images/BLP_sections.bmp)
 
 The main window of BPL is divided into four sections. Section 1 features a button that opens a Google Earth window, enabling users to search for the coordinates of their off-stream reservoir. Once the user obtains the coordinates representing the reservoir's perimeter, they can enter the values manually or upload them as a CSV file using the "Upload Coordinates" button in Section 2. 
 BPL requires a minimum of four coordinates to outline the perimeter of the reservoir. However, if the shape of the structure requires additional points, it is also possible to add more pairs of coordinates.
