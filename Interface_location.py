@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue May 25 11:58:19 2023
+
+@author: nsilva
+"""
 import tkinter as tk
 import webbrowser
 
@@ -133,9 +139,9 @@ def dem():
     # Get a view and add 1 (to help with log-scaled colors)
     xp, yp = polygon.exterior.xy
     
-    acc = dem.view('acc', nodata=np.nan) + 1
-    fig, ax = plt.subplots(figsize=(8,10))
-    #im = ax.imshow(acc, extent=dem.extent, zorder=1,cmap='cubehelix',alpha=0.6, norm=colors.LogNorm(1, dem.acc.max()))
+    acc = dem.view('dem', nodata=np.nan) + 1
+    fig, ax = plt.subplots(figsize=(10,7))
+    im = ax.imshow(acc, extent=dem.extent, zorder=1,cmap='terrain',alpha=0.5)
     ax.plot(xp, yp)
     ax.fill(xp, yp, alpha=0.3, label='Off-stream reservoir')
     len_path=[]
@@ -181,51 +187,42 @@ def dem():
          
        path=pd.DataFrame(path, columns=['row','column'])
        len_path.append([x,y,len(path)])
-       
        path['X'], path['Y'] = xy(transform, path['row'], path['column'])
-       #path.to_csv('path_{},{}.csv'.format(x,y))
+      
            
        # Get color from colormap
        color = cmap(k % cmap.N)
        
-       ax.plot(path['X'], path['Y'], zorder=3, c=color)
+       ax.plot(path['X'], path['Y'], zorder=3, c=color, linewidth=3)
        ax.scatter(selected_coordinates['X'], selected_coordinates['Y'],
                   zorder=1, s=30,marker='x', c='black')
-    #plt.colorbar(im, ax=ax, label='Upstream Cells')
-    plt.legend(fontsize=14)
+    cbar=plt.colorbar(im, ax=ax, label='Elevation')
+    cbar.ax.tick_params(labelsize=14)
+    cbar.ax.yaxis.label.set_size(14)
     ax.xaxis.set_major_formatter(ticker.StrMethodFormatter('{x:,.0f}'))
     ax.yaxis.set_major_formatter(ticker.StrMethodFormatter('{x:,.0f}'))
-    
+    ax.tick_params(axis='both', labelsize=12)
+    ax.set_ylim(4599900,4603000)
+    ax.set_xlim(333500,336500)
     plt.grid()
    
     
    # Create frame for plot canvas
     plot_frame = tk.Frame(content_frame)
-    plot_frame.grid(row=1, column=1, padx=10, pady=10)
+    plot_frame.grid(rowspan=2, columnspan=2)
     canvas = FigureCanvasTkAgg(fig, master = plot_frame)  
     canvas.draw()
     canvas.get_tk_widget().pack()
     len_path=round(pd.DataFrame(len_path,columns=['x_origin','y_origin','lenght']),2)
-    print(len_path)
+  
   
     
-    
-    
-    
-    '''res_frame = tk.Frame(content_frame)
-    res_frame.grid(row=1, column=0, padx=10, pady=10)
-    for i in range (0,len(len_path)):
-        tk.Label(res_frame, text=str(len_path.iloc[i,0])).grid(row=i, column=0)
-        tk.Label(res_frame, text=str(len_path.iloc[i,1])).grid(row=i, column=1)
-        tk.Label(res_frame, text=str(len_path.iloc[i,2])).grid(row=i, column=2)'''
        
-        
-        
         
 # Create a Tkinter window
 window = tk.Tk()
-window.title("Location breach")
-window.geometry("800x700")
+window.title("BPL: Breach point location for off-stream reservoirs")
+window.geometry("800x500")
 
 # Create a main frame for the window
 main_frame = tk.Frame(window)
@@ -264,8 +261,7 @@ button_open_earth = tk.Button(frame_entries, text="Open Google Earth", command=o
 button_open_earth.pack(pady=10)
 
 
-button_dem=tk.Button(frame_entries, text="Upload DEM", command=dem)
-button_dem.pack(pady=5)
+
 
 title=tk.Label(frame_entries, text='Location off-stream reservoir')
 title.pack(side=tk.TOP)
@@ -316,7 +312,7 @@ def add_coordinates():
 
 # Create a button to add more entry fields
 button_add_entry = tk.Button(frame_entries, text="Add Entry", command=add_entry_pair)
-button_add_entry.pack()
+button_add_entry.pack(side=tk.BOTTOM)
 
 button_add_coor = tk.Button(frame_entries, text="Upload coordinates", command=add_coordinates)
 button_add_coor.pack(side=tk.BOTTOM)
@@ -341,6 +337,9 @@ space=tk.Label(frame_map, text="Space between points")
 space.pack(side=tk.LEFT)
 entry_space=tk.Entry(frame_map)
 entry_space.pack(side=tk.LEFT)
+
+button_dem=tk.Button(frame_map, text="Upload DEM", command=dem)
+button_dem.pack(pady=5,side=tk.BOTTOM)
 
 # Start the Tkinter event loop
 window.mainloop()
