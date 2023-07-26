@@ -1,5 +1,7 @@
-# BPL: Breaking point pound location
+# BPL: Breaking point location for off-stream reservoirs
 This tool enables reservoir owners and administrators to evaluate the most probable discharge pathways resulting from a reservoir failure. It provides a means for assessing potential scenarios and understanding the likely routes through which the reservoir water would flow in the event of a failure.
+
+The tool evaluates the flow path from several breaking points (BPs) located along the perimeter of the reservoir. The separation between the BPs is determined by the user.
 
 ## Dependencies
 It is recommended to use Anaconda to install the dependencies:
@@ -23,5 +25,9 @@ Download the script Interface_location.py. Execute the Python file from the Pyth
 
 ## Manual
 ![bpl](Images/BPL.bmp)
+
+The main window of BPL is divided into four sections. Section 1 features a button that opens a Google Earth window, enabling users to search for the coordinates of their off-stream reservoir. Once the user obtains the coordinates representing the reservoir's perimeter, they can enter the values manually or upload them as a CSV file using the "Upload Coordinates" button in Section 2.
+
+
 ## Support
 For support, email me at nsilva@cimne.upc.edu
