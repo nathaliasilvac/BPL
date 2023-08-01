@@ -6,7 +6,6 @@ Created on Tue May 25 11:58:19 2023
 """
 import tkinter as tk
 import webbrowser
-
 from tkintermapview import TkinterMapView
 import pysheds
 import matplotlib.pyplot as plt
@@ -25,6 +24,7 @@ import matplotlib.colors as colors
 from matplotlib.cm import get_cmap
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg)
 import matplotlib.ticker as ticker
+
 def open_google_earth():
    
     # Construct the Google Earth URLs with the coordinates
@@ -316,7 +316,6 @@ button_add_entry.pack(side=tk.BOTTOM)
 
 button_add_coor = tk.Button(frame_entries, text="Upload coordinates", command=add_coordinates)
 button_add_coor.pack(side=tk.BOTTOM)
-
 
 
 # Create a frame for map widget and button_open_earth
