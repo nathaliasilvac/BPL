@@ -20,8 +20,30 @@ It is recommended to use Anaconda to install the dependencies:
 
 -[matplotlib 3.6.2](https://matplotlib.org/stable/index.html)
 
- ## Installation  
-Download the script Interface_location.py. Execute the Python file from the Python console or any other console, such as Spyder.
+ ## Installation
+
+1. **Clone the Repository:**
+   ```
+   git clone https://github.com/your-username/BLP.git
+   ```
+
+2. **Create a new conda environment in the Anaconda prompt and activate**
+   ```
+   conda create --name BLP python==3.8
+   ```
+   ```
+   conda activate BLP
+   ```
+   
+3. **Install the packages listed in the requirements.txt file**
+   ```
+    pip install --user -r requirements_blp.txt
+   ```
+   
+4. **Execute the Python file (BLP.py)**
+   ```
+    Python BLP.py
+   ```
 
 ## Manual
 ![bpl](Images/BLP_sections.bmp)
